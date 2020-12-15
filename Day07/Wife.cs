@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Day07
 {
-    class Wife
+    internal class Wife
     {
         //字段 存错数据
         //属性 保护字段
@@ -43,7 +39,7 @@ namespace Day07
             }
             set
             {
-                if (value>0&&value<110)
+                if (value > 0 && value < 110)
                     this.age = value;
             }
         }
@@ -53,17 +49,19 @@ namespace Day07
         {
         }
 
-        public Wife(string name):this()
+        public Wife(string name) : this()
         {
             this.Name = name;
         }
+
         //构造函数  方便实例化
         //无返回值，与类同名
-        public Wife(string name,int age):this(name)
+        public Wife(string name, int age) : this(name)
         {
             this.Age = age;//还是使用属性
         }
-        public Wife(String name,int age,bool sex):this(name,age)
+
+        public Wife(String name, int age, bool sex) : this(name, age)
         {
             this.sex = sex;//这个时候没有调用属性
         }
@@ -72,10 +70,10 @@ namespace Day07
         {
             return this.sex;
         }
+
         public void SetSex(bool sex)
         {
             this.sex = sex;
         }
-        
     }
 }

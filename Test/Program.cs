@@ -2,18 +2,18 @@
 
 namespace Test
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
             //标准数字格式字符串
             char c1 = '\'';
             char c2 = '\0';
             Console.WriteLine("Hi,\r\ntest\r\test;");
-            Console.WriteLine("金额：{0:c0}",10);
-            Console.WriteLine("{0:d2}",5);
-            Console.WriteLine("{0:d2}",15);
+            Console.WriteLine("金额：{0:c0}", 10);
+            Console.WriteLine("{0:d2}", 5);
+            Console.WriteLine("{0:d2}", 15);
 
             Console.WriteLine("{0:f1}", 1.26);
             Console.WriteLine("{0:p0}", 0.1);

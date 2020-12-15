@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Day06
 {
-    class Program
+    internal class Program
     {
         //test 333333
-        static void Main1(string[] args)
+        private static void Main1(string[] args)
         {
-
             int num = 1;
             refTest(ref num);
             Console.WriteLine(num);
@@ -40,20 +36,20 @@ namespace Day06
             a = 4;
         }
 
-        private static void mySwap(ref int a,ref int b)
+        private static void mySwap(ref int a, ref int b)
         {
             int temp = a;
             a = b;
             b = temp;
         }
 
-        private static void mySquare(int length,int width,out int m2,out int l2)
+        private static void mySquare(int length, int width, out int m2, out int l2)
         {
             m2 = length * width;
             l2 = (length + width) * 2;
         }
 
-        static void Main2()
+        private static void Main2()
         {
             int a = 1;
             int b = a;
@@ -66,7 +62,6 @@ namespace Day06
 
             //拆箱：“比较”消耗性能
             b = (int)o;
-
 
             int num = 100;
             //不存在装箱
@@ -84,7 +79,7 @@ namespace Day06
         {
         }
 
-        static void Main444()
+        private static void Main444()
         {
             string s1 = "ddd";
             string s2 = "ddd";
@@ -94,7 +89,6 @@ namespace Day06
             bool r1 = object.ReferenceEquals(s1, s2);
             bool r2 = object.ReferenceEquals(s1, s3);
             bool r3 = object.ReferenceEquals(s3, s4);
-
 
             //避免不断开辟新空间
             //可变字符串，一次开辟可以容纳n个字符大小的空间
@@ -115,17 +109,17 @@ namespace Day06
             str = str.Insert(0, "dfs");
         }
 
-        static void Main()
+        private static void Main()
         {
             string s = "How are you";
             Console.WriteLine(s);
-            string[] ss= s.Split(' ');
-            for (int i = ss.Length-1; i >=0; i--)
-                Console.Write(ss[i]+" ");
+            string[] ss = s.Split(' ');
+            for (int i = ss.Length - 1; i >= 0; i--)
+                Console.Write(ss[i] + " ");
             Console.WriteLine();
             for (int i = ss.Length - 1; i >= 0; i--)
             {
-                for (int j = ss[i].Length-1; j >=0; j--)
+                for (int j = ss[i].Length - 1; j >= 0; j--)
                 {
                     Console.Write(ss[i][j]);
                 }

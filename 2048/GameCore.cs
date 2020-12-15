@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace _2048
 {
-    class GameCore
+    internal class GameCore
     {
         private int[,] data2048;
         private int rowNum;
@@ -14,17 +13,19 @@ namespace _2048
         private List<Location> emptyLocationList;
         private Random random;
         private int[,] lastData2048;
-        public bool IsChange 
+
+        public bool IsChange
         {
-            get 
+            get
             {
                 for (int r = 0; r < rowNum; r++)
                     for (int c = 0; c < colNum; c++)
                         if (data2048[r, c] != lastData2048[r, c])
                             return true;
                 return false;
-            } 
+            }
         }
+
         public bool IsWin
         {
             get
@@ -34,6 +35,7 @@ namespace _2048
                 return false;
             }
         }
+
         public bool IsLose
         {
             get
@@ -50,6 +52,7 @@ namespace _2048
                 return true;
             }
         }
+
         public bool IsFull
         {
             get
@@ -59,17 +62,19 @@ namespace _2048
                 return true;
             }
         }
+
         public int[,] Map
-        { 
-            get 
-            { 
-                return this.data2048; 
+        {
+            get
+            {
+                return this.data2048;
             }
         }
 
-        public GameCore():this(4,4)
-        {}
-        public GameCore(int rowNum,int colNum)
+        public GameCore() : this(4, 4)
+        { }
+
+        public GameCore(int rowNum, int colNum)
         {
             this.rowNum = rowNum;
             this.colNum = colNum;
@@ -78,7 +83,7 @@ namespace _2048
             mergeColArray = new int[rowNum];
             emptyLocationList = new List<Location>(rowNum * colNum);
             random = new Random();
-            lastData2048= new int[rowNum, colNum];
+            lastData2048 = new int[rowNum, colNum];
         }
 
         private void FindEmpty()
@@ -86,9 +91,10 @@ namespace _2048
             emptyLocationList.Clear();
             for (int r = 0; r < rowNum; r++)
                 for (int c = 0; c < colNum; c++)
-                    if (data2048[r,c]==0)
+                    if (data2048[r, c] == 0)
                         emptyLocationList.Add(new Location(r, c));
         }
+
         private void MoveZeroToEnd(int[] array)
         {
             int indexFlag = 0;
@@ -99,10 +105,11 @@ namespace _2048
                 if (indexFlag++ != i) array[i] = 0;
             }
         }
+
         private void MergeSingleArray(int[] array)
         {
             MoveZeroToEnd(array);
-            for (int i = 0; i < array.Length-1; i++)
+            for (int i = 0; i < array.Length - 1; i++)
             {
                 if (array[i] != 0 && array[i] == array[i + 1])
                 {
@@ -112,6 +119,7 @@ namespace _2048
             }
             MoveZeroToEnd(array);
         }
+
         private void RightMove()
         {
             for (int row = 0; row < rowNum; row++)
@@ -123,6 +131,7 @@ namespace _2048
                     data2048[row, col] = mergeRowArray[colNum - col - 1];
             }
         }
+
         private void DownMove()
         {
             for (int col = 0; col < colNum; col++)
@@ -134,6 +143,7 @@ namespace _2048
                     data2048[row, col] = mergeColArray[rowNum - row - 1];
             }
         }
+
         private void LeftMove()
         {
             for (int row = 0; row < rowNum; row++)
@@ -145,6 +155,7 @@ namespace _2048
                     data2048[row, col] = mergeRowArray[col];
             }
         }
+
         private void UpMove()
         {
             for (int col = 0; col < colNum; col++)
@@ -156,6 +167,7 @@ namespace _2048
                     data2048[row, col] = mergeColArray[row];
             }
         }
+
         public void Move(MoveDirection direction)
         {
             Array.Copy(data2048, lastData2048, data2048.Length);
@@ -164,18 +176,21 @@ namespace _2048
                 case MoveDirection.Up:
                     UpMove();
                     break;
+
                 case MoveDirection.Down:
                     DownMove();
                     break;
+
                 case MoveDirection.Left:
                     LeftMove();
                     break;
+
                 case MoveDirection.Right:
                     RightMove();
                     break;
             }
-
         }
+
         public void GenerateNumber()
         {
             FindEmpty();

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace _2048
+﻿namespace _2048
 {
-    enum MoveDirection
+    internal enum MoveDirection
     {
         Up,
         Down,

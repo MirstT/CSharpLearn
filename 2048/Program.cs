@@ -2,9 +2,9 @@
 
 namespace _2048
 {
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             GameCore core = new GameCore();
             core.GenerateNumber();
@@ -33,7 +33,6 @@ namespace _2048
                     Console.WriteLine("You LOSE!!!");
                     return;
                 }
-
             }
         }
 
@@ -46,6 +45,7 @@ namespace _2048
                 Console.WriteLine();
             }
         }
+
         private static void KeyDown(GameCore core)
         {
             string direction = Console.ReadLine();
@@ -54,23 +54,22 @@ namespace _2048
                 case "w":
                     core.Move(MoveDirection.Up);
                     break;
+
                 case "a":
                     core.Move(MoveDirection.Left);
                     break;
+
                 case "s":
                     core.Move(MoveDirection.Down);
                     break;
+
                 case "d":
                     core.Move(MoveDirection.Right);
                     break;
             }
         }
 
-
-
-
-
-        static void Main1(string[] args)
+        private static void Main1(string[] args)
         {
             Init2048();
         }
@@ -81,6 +80,7 @@ namespace _2048
             lose2048 = -1,
             continue2048 = 0
         }
+
         private static void Init2048()
         {
             Console.WriteLine("--------------------------------------");
@@ -106,17 +106,17 @@ namespace _2048
                         Console.WriteLine("You WIN!!!");
                         Console.WriteLine("You WIN!!!");
                         return;
+
                     case winOrLose2048.lose2048:
                         Console.WriteLine("You LOSE!!!");
                         Console.WriteLine("You LOSE!!!");
                         Console.WriteLine("You LOSE!!!");
                         return;
+
                     default:
                         break;
                 }
             }
-
-
         }
 
         private static void Control2048(int[,] data2048)
@@ -126,39 +126,48 @@ namespace _2048
             switch (direction)
             {
                 case "w":
-                    Move(data2048,MoveDirection.Up);
+                    Move(data2048, MoveDirection.Up);
                     break;
+
                 case "a":
                     Move(data2048, MoveDirection.Left);
                     break;
+
                 case "s":
                     Move(data2048, MoveDirection.Down);
                     break;
+
                 case "d":
                     Move(data2048, MoveDirection.Right);
                     break;
+
                 default:
                     break;
             }
         }
-        private static void Move(int[,] data2048,MoveDirection direction)
+
+        private static void Move(int[,] data2048, MoveDirection direction)
         {
             switch (direction)
             {
                 case MoveDirection.Up:
                     UpMove(data2048);
                     break;
+
                 case MoveDirection.Down:
                     DownMove(data2048);
                     break;
+
                 case MoveDirection.Left:
                     LeftMove(data2048);
                     break;
+
                 case MoveDirection.Right:
                     RightMove(data2048);
                     break;
             }
         }
+
         private static void RightMove(int[,] data2048)
         {
             for (int row = 0; row < data2048.GetLength(0); row++)
@@ -173,6 +182,7 @@ namespace _2048
                     data2048[row, col] = array[col];
             }
         }
+
         private static void DownMove(int[,] data2048)
         {
             for (int col = 0; col < data2048.GetLength(1); col++)
@@ -187,6 +197,7 @@ namespace _2048
                     data2048[row, col] = array[row];
             }
         }
+
         private static void LeftMove(int[,] data2048)
         {
             for (int row = 0; row < data2048.GetLength(0); row++)
@@ -224,7 +235,8 @@ namespace _2048
             }
         }
 
-        static Random random = new Random();
+        private static Random random = new Random();
+
         private static void InsertTwoOrFour(int[,] data2048, int[,] lastData2048)
         {
             if (IsSame(data2048, lastData2048) || IsFull(data2048)) return;
@@ -247,6 +259,7 @@ namespace _2048
                 }
             }
         }
+
         private static void InsertTwoOrFour(int[,] data2048)
         {
             int row = random.Next(data2048.GetLength(0));
@@ -339,6 +352,7 @@ namespace _2048
                 return winOrLose2048.lose2048;
             return winOrLose2048.continue2048;
         }
+
         private static bool IsLose(int[,] data2048)
         {
             if (!IsFull(data2048)) return false;

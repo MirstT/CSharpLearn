@@ -2,11 +2,12 @@
 
 namespace Day03
 {
-    class Program
+    internal class Program
     {
-        static void Main2(string[] args)
+        private static void Main2(string[] args)
         {
             #region test
+
             Console.WriteLine("请输入性别:");
             string sex = Console.ReadLine();
             if (sex == "男")
@@ -22,7 +23,7 @@ namespace Day03
                 Console.WriteLine("性别未知!");
             }
 
-            #endregion
+            #endregion test
 
             //获取数据
             Console.WriteLine("请输入第一个数字:");
@@ -47,7 +48,6 @@ namespace Day03
             else
                 Console.WriteLine("运算符输入有误!");
 
-
             ////获取数据
             //Console.WriteLine("请输入第一个数字:");
             //int numberOne = int.Parse(Console.ReadLine());
@@ -62,8 +62,8 @@ namespace Day03
             //float result = 0;
             //switch (op)
             //{
-            //    case "+": 
-            //        result = numberOne + numberTwo; 
+            //    case "+":
+            //        result = numberOne + numberTwo;
             //        break;
             //    case "-":
             //        result = numberOne - numberTwo;
@@ -86,10 +86,9 @@ namespace Day03
             //    Console.WriteLine("结果为:" + result);
             //else
             //    Console.WriteLine("运算符输入有误!");
-
         }
 
-        static void Main3()
+        private static void Main3()
         {
             Console.WriteLine("成绩:");
             int score = int.Parse(Console.ReadLine());
@@ -113,7 +112,7 @@ namespace Day03
             Console.WriteLine(n2);//2
         }
 
-        static void Main4()
+        private static void Main4()
         {
             Random random = new Random();
 
@@ -139,8 +138,7 @@ namespace Day03
             //    }
             //} while (number!=inputNumber);
 
-
-            while(true)
+            while (true)
             {
                 count++;
                 Console.WriteLine("input:");
@@ -159,11 +157,9 @@ namespace Day03
                     break;
                 }
             }
-
         }
 
-
-        static void Main()
+        private static void Main()
         {
             /*1.在控制台中实现年历的方法
              * --调用12遍->月历
@@ -172,7 +168,7 @@ namespace Day03
              * --计算当月1日星期数，输出空白（\t）
              * --计算当月当月天数 1\t 2 3 4
              * --每逢周六换行
-             * 
+             *
              * 3.根据年月日计算星期数
              * 4.计算指定月份的天数
              * 5.判断闰年的方法（可能要第一个调用）
@@ -185,18 +181,17 @@ namespace Day03
             for (int i = 0; i < 12; i++)
             {
                 Console.WriteLine("--------------------------------------------------");
-                Console.WriteLine("{0}月份",i+1);
+                Console.WriteLine("{0}月份", i + 1);
                 GetMonthlyCalendar(year, i + 1);
             }
-
-
         }
-        private static void GetMonthlyCalendar(int year,int Month)
+
+        private static void GetMonthlyCalendar(int year, int Month)
         {
             Console.WriteLine("日\t一\t二\t三\t四\t五\t六");
-            int weekOfFirstDayInMonth=GetWeekByDay(year, Month, 1);
-            
-            while (weekOfFirstDayInMonth!=0)
+            int weekOfFirstDayInMonth = GetWeekByDay(year, Month, 1);
+
+            while (weekOfFirstDayInMonth != 0)
             {
                 Console.Write("\t");
                 weekOfFirstDayInMonth--;
@@ -205,7 +200,7 @@ namespace Day03
             int daysOfMonth = DaysOfMonth(year, Month);
             for (int i = 1; i <= daysOfMonth; i++)
             {
-                Console.Write(i+"\t");
+                Console.Write(i + "\t");
                 if (GetWeekByDay(year, Month, i) == 6)
                 {
                     Console.Write("\n");
@@ -243,7 +238,7 @@ namespace Day03
         /// <param name="year"></param>
         /// <param name="month"></param>
         /// <returns>月天数</returns>
-        private static int DaysOfMonth(int year,int month)
+        private static int DaysOfMonth(int year, int month)
         {
             if (month < 1 || month > 12) return 0;
             switch (month)
@@ -253,13 +248,15 @@ namespace Day03
                 case 9:
                 case 11:
                     return 30;
+
                 case 2:
                     return IsLeapYear(year) ? 29 : 28;
+
                 default:
                     return 31;
             }
             //int daysOfMonth = 0;
-            //switch (month) 
+            //switch (month)
             //{
             //    case 4:
             //    case 6:
@@ -276,7 +273,7 @@ namespace Day03
             //        {
             //            daysOfMonth = 28;
             //        }
-            //        break; 
+            //        break;
             //    default:
             //        daysOfMonth = 31;
             //        break;
@@ -284,12 +281,12 @@ namespace Day03
             //return daysOfMonth;
         }
 
-        private static int TotalDaysOfYear(int year,int month,int day)
+        private static int TotalDaysOfYear(int year, int month, int day)
         {
             int daysOfYear = 0;
-            while (month!=0)
+            while (month != 0)
                 daysOfYear += DaysOfMonth(year, month--);
-            return daysOfYear+day;
+            return daysOfYear + day;
         }
     }
 }

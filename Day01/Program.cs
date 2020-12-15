@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Day01
 {
-    class Program
+    internal class Program
     {
-
-        static void Main()
+        private static void Main()
         {
             string gunName;
             int gunBulletCapacity;
@@ -26,14 +21,15 @@ namespace Day01
             Console.WriteLine("名称:" + gunName + " 容量:"
                 + gunBulletCapacity + " 数量:" + gunBulletCurrentNum +
                 " 剩余:" + gunBulletRemainNum);
-            
+
             Console.WriteLine(string.Format("名称：{0}，容量：{1}，数量：{2}，" +
-                "剩余：{3}", 
-                gunName, gunBulletCapacity, gunBulletCurrentNum, 
+                "剩余：{3}",
+                gunName, gunBulletCapacity, gunBulletCurrentNum,
                 gunBulletRemainNum));
             Console.ReadLine();
         }
-        static void Maintest(string[] args)
+
+        private static void Maintest(string[] args)
         {
             Console.Title = "hello_world";
             Console.WriteLine("hello,world");
