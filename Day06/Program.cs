@@ -9,6 +9,7 @@ namespace Day06
 {
     class Program
     {
+        //test 333333
         static void Main1(string[] args)
         {
 
