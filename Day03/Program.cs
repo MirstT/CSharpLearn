@@ -24,7 +24,6 @@ namespace Day03
 
             #endregion
 
-            //test 22222
             //获取数据
             Console.WriteLine("请输入第一个数字:");
             int numberOne = int.Parse(Console.ReadLine());
