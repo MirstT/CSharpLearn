@@ -1,5 +1,6 @@
 ﻿namespace _2048
 {
+    //test
     internal struct Location
     {
         public int Rindex { get; set; }
